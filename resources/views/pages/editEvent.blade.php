@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>| Guest Login </title>
+    <title>| Registry</title>
 
     <!-- Bootstrap -->
     <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
@@ -19,7 +19,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body style="background: url( {{ asset('images/StockSnap_VEG698H8CK.jpg') }} ) no-repeat center center fixed; 
+  <body style="background: url( {{$event->picture1}} ) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -34,31 +34,43 @@
       <div class="col-xs-10" >
 
         <div class="col-sm-7" style="color: white">
-          <img src="{{asset('images/unnamed.jpg')}}" style="width: 100%; margin-top: 50px; margin-bottom: 20px;">
-          <h1 style="padding-bottom: 50px;">{{$event->event_name}}</h1>
+          <img src="{{$event->picture}}" style="width: 100%; margin-top: 50px; margin-bottom: 20px;">
+          <h1>{{$event->event_name}}</h1>
         </div>
 
         <div class="col-sm-5" style="color: white; margin-top: 50px; margin-bottom: 50px;">
-          <form method="POST" action="{{url($event->id.'/rsvp')}}">
-            {{csrf_field()}}
-          <!-- style was inserted to emphasize -->
-           <h3 style="font-weight: bold;"> RSVP </h3> 
-            <br>
-            <div class="radio">
-              <label><input type="radio" name="rsvp" value="Yes">Going</label>
-            </div>
-            <div class="radio">
-              <label><input type="radio" name="rsvp" value="No">Not Going</label>
-            </div>
-            <div class="radio">
-              <label><input type="radio" name="rsvp" value="Maybe">Undecided</label>
-            </div> 
-            <button type="submit" class="btn btn-default" name="rsvp_submit">
-              Submit
-            </button>
-
-          </form>
-              
+          <form method="POST" action='{{url("myevents/editEvent/$event->id")}}'>
+          {{csrf_field()}}
+        <div class="form-group">
+          <label for="EventName">Event Name:</label>
+          <input type="text" class="form-control" name="event_name" value="{{$event->event_name}}">
+        </div>
+        <div class="form-group">
+          <label for="EventName">Event Code:</label>
+          <input type="text" class="form-control" name="event_code" value="{{$event->event_code}}" placeholder="This will appear in the url of your e-invite.">
+        </div>
+        <div class="form-group">
+          <label for="pic1">Image 1: This will be the background image of your entire page.</label>
+          <input type="file" class="form-control" name="pic1" value="{{$event->picture1}}">
+        </div>
+        <div class="form-group">
+          <label for="pic2">Image 2: This will be the image that will appear beside the Login Page of your e-invite.</label>
+          <input type="file" class="form-control" name="pic2" value="{{$event->picture2}}">
+        </div>
+        <div class="form-group">
+          <label for="date">Date:</label>
+          <input type="date" class="form-control" name="date" value="{{$event->date}}">
+        </div>
+        <div class="form-group bfh-timepicker" data-mode="12h">                      
+          <label for="time">Time:</label>
+          <input type="time" class="form-control" name="time" value="{{$event->time}}"> 
+        </div>
+        <div class="form-group">
+          <label for="venue">Venue:</label>
+          <input type="text" class="form-control" name="venue" value="{{$event->venue}}">
+        </div>
+        <button type="submit" class="btn btn-default btn-success">Update Event</button>
+      </form>
         </div>
 
       </div>
@@ -74,9 +86,8 @@
       <p> {{$event->venue}} </p>
     </div>
     
-    
-
   </div>
+
     
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

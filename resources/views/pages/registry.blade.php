@@ -44,21 +44,36 @@
           </tr>
         </thead>
         <tbody>
+        @foreach($guests as $guest)
           <tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td><button type="button" class="btn btn-danger btn-xs">Delete this Guest?</button></td>
+            <td>{{$guest->first_name}} {{$guest->last_name}}</td>
+            <td>{{$guest->response}}</td>
+            <td>
+            <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteGuest{{$guest->id}}">Delete this Guest?</button>
+            <div class="modal fade" id="deleteGuest{{$guest->id}}" role="dialog">
+                <div class="modal-dialog">
+                
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Confirm Delete</h4>
+                    </div>
+                    <div class="modal-body">
+                      <p>Are you sure you want to remove {{$guest->first_name}} {{$guest->last_name}} from the registry?</p>
+                    </div>
+                    <div class="modal-footer">
+                      <a href='{{url("deleteGuest/$guest->id/$event->id")}}'>
+                        <button type="button" class="btn btn-danger">Remove</button>
+                      </a>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+            </td>
           </tr>
-          <tr>
-            <td>Mary</td>
-            <td>Moe</td>
-            <td><button type="button" class="btn btn-danger btn-xs">Delete this Guest?</button></td>
-          </tr>
-          <tr>
-            <td>July</td>
-            <td>Dooley</td>
-            <td><button type="button" class="btn btn-danger btn-xs">Delete this Guest?</button></td>
-          </tr>
+        @endforeach
         </tbody>
       </table>
     </div>

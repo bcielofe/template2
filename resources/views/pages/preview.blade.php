@@ -69,7 +69,7 @@
               <span class="rightLogin">
                 New Guest? 
                 <br>
-                <a href="#" id="RegBtn"> Register </a> 
+                <a href="{{url($event->event_code.'/register')}}" id="RegBtn"> Register </a> 
               </span>
             </div>
 

@@ -39,36 +39,47 @@
           </tr>
         </thead>
         <tbody>
+        @foreach($events as $event)
           <tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td><button type="button" class="btn btn-primary btn-xs">Registry</button></td>
-            <td>John</td>
-            <td>Doe</td>
-            <td><button type="button" class="btn btn-info btn-xs">Edit Event?</button>
-            <button type="button" class="btn btn-danger btn-xs">Delete Event?</button>
+            <td>{{$event->event_name}}</td>
+            <td>{{$event->event_code}}</td>
+            <td>
+            <a href='{{url("myevents/registry/$event->id")}}'>  
+              <button type="button" class="btn btn-primary btn-xs">Registry</button>
+            </a>
+            </td>
+            <td>{{$event->date}} @ {{$event->time}}</td>
+            <td>{{$event->venue}}</td>
+            <td>
+            <a href='{{url("myevents/editEvent/$event->id")}}'>
+              <button type="button" class="btn btn-info btn-xs">Edit Event?</button>
+            </a>
+            <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteEvent{{$event->id}}">Delete Event?</button>
+
+            <div class="modal fade" id="deleteEvent{{$event->id}}" role="dialog">
+                <div class="modal-dialog">
+                
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Confirm Delete</h4>
+                    </div>
+                    <div class="modal-body">
+                      <p>{{$event->event_name}}</p>
+                    </div>
+                    <div class="modal-footer">
+                      <a href='{{url("myevents/deleteEvent/$event->id")}}'>
+                        <button type="button" class="btn btn-danger" >Delete</button>
+                      </a>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
             </td>
           </tr>
-          <tr>
-            <td>Mary</td>
-            <td>Moe</td>
-            <td><button type="button" class="btn btn-primary btn-xs">Registry</button></td>
-            <td>John</td>
-            <td>Doe</td>
-            <td><button type="button" class="btn btn-info btn-xs">Edit Event?</button>
-            <button type="button" class="btn btn-danger btn-xs">Delete Event?</button>
-            </td>
-          </tr>
-          <tr>
-            <td>July</td>
-            <td>Dooley</td>
-            <td><button type="button" class="btn btn-primary btn-xs">Registry</button></td>
-            <td>John</td>
-            <td>Doe</td>
-            <td><button type="button" class="btn btn-info btn-xs">Edit Event?</button>
-            <button type="button" class="btn btn-danger btn-xs">Delete Event?</button>
-            </td>
-          </tr>
+        @endforeach
         </tbody>
       </table>
     </div>
