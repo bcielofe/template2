@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>| Registry</title>
+    <title>| Customize Invite</title>
 
     <!-- Bootstrap -->
     <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
@@ -39,7 +39,7 @@
         </div>
 
         <div class="col-sm-5" style="color: white; margin-top: 50px; margin-bottom: 50px;">
-          <form method="POST" action="{{url("myevents/savenewevent")}}">
+          <form method="POST" action="{{url("myevents/savenewevent")}}" enctype="multipart/form-data">
           {{csrf_field()}}
         <div class="form-group">
           <label for="EventName">Event Name:</label>
@@ -50,11 +50,11 @@
           <input type="text" class="form-control" name="event_code" placeholder="This will appear in the url of your e-invite.">
         </div>
         <div class="form-group">
-          <label for="pic1">Image 1: This will be the background image of your entire page.</label>
+          <label for="pic1">Image 1: This will be the background image of your entire page. Photo should be less than 5MB. </label>
           <input type="file" class="form-control" name="pic1">
         </div>
         <div class="form-group">
-          <label for="pic2">Image 2: This will be the image that will appear beside the Login Page of your e-invite.</label>
+          <label for="pic2">Image 2: This will be the image that will appear beside the Login Page of your e-invite. Photo should be less than 5MB. </label>
           <input type="file" class="form-control" name="pic2">
         </div>
         <div class="form-group">

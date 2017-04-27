@@ -19,8 +19,9 @@ class GuestController extends Controller
     public function rsvp(Request $request, $event_id)
     {
         $guest = Guest::find(Session::get('guest_id'));
-        $guest->update_response($event_id,$request->rsvp);
-        return view('pages.events',compact('events'));
+        $guest->set_response($event_id,$request->rsvp);
+        $event = Event::find($event_id);
+        return view('pages.rsvp_reply',compact('event'));
     }
     public function create_guest(Request $request, $event_code)
     {

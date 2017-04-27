@@ -15,10 +15,11 @@ class Guest extends Model
     }
 
     public function update_response($event_id,$response){
-    	return $this->events()->withPivot([$event_id => ['response' => $response]]);
+    	return $this->events()->where('id',$event_id)->first()->pivot->update(['response' => $response]);
     }
 
      public function remove_event($event_id){
     	return $this->events()->detach($event_id);
     }
+
 }

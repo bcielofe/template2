@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return redirect ('Login');
+    return redirect ('login');
 });
 
 Auth::routes();
@@ -60,7 +60,3 @@ Route::get('/registry', function () {
 Route::get('/myevents', 'EventController@show_events');
 
 Route::get('/{event_code}', 'EventController@login');
-
-
-
-

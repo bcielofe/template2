@@ -24,12 +24,12 @@
     <div class="container table-responsive">
       <button type="button" class="btn btn-warning btn-md" style="margin-top: 20px; float: right;">Go Back to Events List</button>
       <h2>Event Name</h2>
-      <p>Below are the responses of the people you invited to this event:</p>            
+      <p>Below are the people who are GOING to this event:</p>            
       <table class="table table-striped">
         <thead>
           <tr>
             <th>Name</th>
-            <th>
+            <!-- <th>
               <div class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropup" href="#" style="text-decoration: none; color: black;">Response
                 <span class="caret"></span></a>
@@ -39,7 +39,7 @@
                   <li><a href="#">Undecided</a></li>
                 </ul>
               </div>
-            </th>
+            </th> -->
             <th>Other Actions</th>
           </tr>
         </thead>
@@ -47,7 +47,7 @@
         @foreach($guests as $guest)
           <tr>
             <td>{{$guest->first_name}} {{$guest->last_name}}</td>
-            <td>{{$guest->response}}</td>
+            <!-- <td>{{$guest->response}}</td> -->
             <td>
             <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteGuest{{$guest->id}}">Delete this Guest?</button>
             <div class="modal fade" id="deleteGuest{{$guest->id}}" role="dialog">

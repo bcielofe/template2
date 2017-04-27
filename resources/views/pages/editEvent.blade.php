@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>| Registry</title>
+    <title>| Edit Event</title>
 
     <!-- Bootstrap -->
     <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
@@ -19,11 +19,11 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body style="background: url( {{$event->picture1}} ) no-repeat center center fixed; 
+  <body style='background: url( {{asset("uploads/$event->picture1")}} ) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;">
+  background-size: cover;'>
 
   <div class="container" style="margin-top: 10%">
 
@@ -34,12 +34,12 @@
       <div class="col-xs-10" >
 
         <div class="col-sm-7" style="color: white">
-          <img src="{{$event->picture}}" style="width: 100%; margin-top: 50px; margin-bottom: 20px;">
+          <img src='{{asset("uploads/$event->picture2")}}' style="width: 100%; margin-top: 50px; margin-bottom: 20px;">
           <h1>{{$event->event_name}}</h1>
         </div>
 
         <div class="col-sm-5" style="color: white; margin-top: 50px; margin-bottom: 50px;">
-          <form method="POST" action='{{url("myevents/editEvent/$event->id")}}'>
+          <form method="POST" action='{{url("myevents/editEvent/$event->id")}}' enctype="multipart/form-data">
           {{csrf_field()}}
         <div class="form-group">
           <label for="EventName">Event Name:</label>

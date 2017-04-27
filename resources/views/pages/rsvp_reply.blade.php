@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>| Guest Login </title>
+    <title>| See you! </title>
 
     <!-- Bootstrap -->
     <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
@@ -19,7 +19,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body style='background: url( {{ asset("uploads/$event->picture1") }} ) no-repeat center center fixed; 
+  <body style='background: url( {{asset("uploads/$event->picture1")}} ) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -34,45 +34,13 @@
       <div class="col-xs-10" >
 
         <div class="col-sm-7" style="color: white">
-          <img src='{{ asset("uploads/$event->picture2") }}' style="width: 100%; margin-top: 50px; margin-bottom: 20px;">
+          <img src='{{asset("uploads/$event->picture2")}}' style="width: 100%; margin-top: 50px; margin-bottom: 20px;">
           <h1 style="padding-bottom: 50px;">{{$event->event_name}}</h1>
         </div>
 
         <div class="col-sm-5" style="color: white; margin-top: 50px; margin-bottom: 50px;">
-          <form method="POST" action="{{url($event->event_code.'/login')}}">
-            {{csrf_field()}}
-          <!-- style was inserted to emphasize -->
-            <h3 style="font-weight: bold;"> LOGIN </h3> 
-            <br>
-
-            <div class="form-group">
-              <label for="username">Username:</label>
-              <input type="username" class="form-control" id="username" name="username" placeholder="Enter username" required>
-            </div>
-
-            <div class="form-group">
-              <div>
-                <span class="leftLogin">
-                  <label for="pwd"> Password: </label>
-                </span>
-                <span class="rightLogin"> 
-                  <a href="#" id="PwdBtn"> Forgot your password? </a> 
-                </span>
-              </div>
-              <input type="password" class="form-control" id="pwd" name="password" placeholder="Enter password" required>
-            </div>
-            <div class="clear">
-              <button type="submit" class="btn btn-default leftLogin" name="login" data-dismiss="modal">
-                Login
-              </button>
-          </form>
-              <span class="rightLogin">
-                New Guest? 
-                <br>
-                <a href="{{url($event->event_code.'/register')}}" id="RegBtn"> Register </a> 
-              </span>
-            </div>
-
+          
+          <h4> Please visit this page again 2 days before the event for your tickets, or to change your mind, or if you have already made a decision. </h4>    
         </div>
 
       </div>
